@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─── */
+:root {
+  --color-dark-bg: #0B0F1A;
+  --color-dark-card: rgba(255, 255, 255, 0.05);
+  --color-primary: #00F0FF;
+  --color-accent: #8B5CF6;
+  --color-success: #10B981;
+  --color-text: #F1F5F9;
+  --color-muted: #94A3B8;
+  --color-danger: #EF4444;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ─── Base ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0B0F1A;
+  color: #F1F5F9;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B5CF6;
+  border-radius: 3px;
+}
+
+/* ─── Glassmorphism Card ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), 0 0 60px rgba(139, 92, 246, 0.05);
+}
+
+/* ─── Glow Utilities ─── */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3), 0 0 40px rgba(0, 240, 255, 0.1);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.2);
+}
+
+/* ─── Neon Button ─── */
+.btn-neon {
+  display: inline-block;
+  position: relative;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.025em;
+  transition: all 300ms ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn-neon-primary {
+  background: linear-gradient(135deg, #00F0FF, #8B5CF6);
+  color: #0B0F1A;
+}
+
+.btn-neon-primary:hover {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5), 0 0 50px rgba(139, 92, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-neon-outline {
+  background: transparent;
+  color: #00F0FF;
+  border: 1.5px solid rgba(0, 240, 255, 0.4);
+}
+
+.btn-neon-outline:hover {
+  border-color: #00F0FF;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ─── Pulsing Search Bar ─── */
+.search-glow {
+  border: 1.5px solid rgba(0, 240, 255, 0.3);
+  animation: pulse-border 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+
+  0%,
+  100% {
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+  }
+
+  50% {
+    border-color: rgba(0, 240, 255, 0.7);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+  }
+}
+
+/* ─── Floating Particles ─── */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float-up linear infinite;
+  opacity: 0.15;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.15;
+  }
+
+  90% {
+    opacity: 0.15;
+  }
+
+  100% {
+    transform: translateY(-100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ─── Gradient Line ─── */
+.gradient-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00F0FF, #8B5CF6, transparent);
+}
+
+/* ─── Badge Styles ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-video {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.badge-article {
+  background: rgba(0, 240, 255, 0.12);
+  color: #00F0FF;
+}
+
+.badge-pdf {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+}
+
+.badge-course {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8B5CF6;
+}
+
+.badge-notes {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+}
+
+/* ─── Utility Overrides ─── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ─── Responsive Grids ─── */
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .how-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* ─── Select dropdown dark theme ─── */
+select option {
+  background: #0B0F1A;
+  color: #F1F5F9;
+}
+
+/* ─── Navbar Responsive ─── */
+@media (max-width: 767px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-nav-btn {
+    display: flex !important;
+  }
+}

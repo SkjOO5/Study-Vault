@@ -17,11 +17,22 @@ function MiniCard({ resource }) {
             style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
         >
             <Link to={`/resource/${resource.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <div style={{ height: 100, background: 'linear-gradient(135deg, rgba(0,240,255,0.08), rgba(139,92,246,0.08))', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <span style={{ fontSize: '2rem', opacity: 0.5 }}>
-                        {resource.type === 'Video' ? '🎬' : resource.type === 'Article' ? '📝' : resource.type === 'PDF' ? '📄' : resource.type === 'Course' ? '🎓' : '📋'}
-                    </span>
-                </div>
+                {resource.thumbnail ? (
+                    <div style={{ height: 120, overflow: 'hidden' }}>
+                        <img
+                            src={resource.thumbnail}
+                            alt={resource.title}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 500ms' }}
+                        />
+                    </div>
+                ) : (
+                    <div style={{ height: 100, background: 'linear-gradient(135deg, rgba(0,240,255,0.08), rgba(139,92,246,0.08))', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ fontSize: '2rem', opacity: 0.5 }}>
+                            {resource.type === 'Video' ? '🎬' : resource.type === 'Article' ? '📝' : resource.type === 'PDF' ? '📄' : resource.type === 'Course' ? '🎓' : '📋'}
+                        </span>
+                    </div>
+                )}
+
                 <div style={{ padding: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <span className={`badge ${getBadgeClass(resource.type)}`} style={{ marginBottom: 6, alignSelf: 'flex-start' }}>{resource.type}</span>
                     <h4 className="line-clamp-2" style={{ fontSize: '0.8rem', fontWeight: 600, color: '#F1F5F9', marginBottom: 6, lineHeight: 1.4 }}>{resource.title}</h4>
